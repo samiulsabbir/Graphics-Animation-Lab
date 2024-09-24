@@ -1,0 +1,273 @@
+#include <iostream>
+#include<windows.h>
+#include<stdio.h>
+#include<GL/glut.h>
+#include<math.h>
+#define pi 3.142857
+#include<iostream>
+using namespace std;
+
+void myInit ()
+{
+  // Background color (dark red)
+  glClearColor(128.0f/255.0f, 0, 0, 1.0f);
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+
+  // Setting window dimension in X- and Y- direction
+  glOrtho(0, 500, 0, 500, 0.0, 10.0);
+}
+
+void display ()
+{
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  // Background
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(0,0);
+  glVertex2f(500, 0);
+  glVertex2f(500, 500);
+  glVertex2f(0, 500);
+  glEnd();
+
+  // Ground or street at the bottom
+  glBegin(GL_QUADS);
+  glColor3ub(46,82,106);
+  glVertex2f(60,50);
+  glVertex2f(440, 50);
+  glVertex2f(440, 70);
+  glVertex2f(60, 70);
+  glEnd();
+
+  // Dark blue building (Left half)
+  glBegin(GL_QUADS);
+  glColor3ub(12,11,29);
+  glVertex2f(260,70);
+  glVertex2f(300, 70);
+  glVertex2f(300, 420);
+  glVertex2f(260, 380);
+  glEnd();
+
+  // Dark blue building (Right half)
+  glBegin(GL_QUADS);
+  glColor3ub(29,31,70);
+  glVertex2f(300,70);
+  glVertex2f(380, 70);
+  glVertex2f(380, 370);
+  glVertex2f(300, 420);
+  glEnd();
+
+  // Glass windows on the blue building
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(265,150);
+  glVertex2f(275, 150);
+  glVertex2f(275, 380);
+  glVertex2f(265, 370);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(280,150);
+  glVertex2f(290, 150);
+  glVertex2f(290, 390);
+  glVertex2f(280, 380);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(310,150);
+  glVertex2f(320, 150);
+  glVertex2f(320, 390);
+  glVertex2f(310, 400);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(325,150);
+  glVertex2f(335, 150);
+  glVertex2f(335, 370);
+  glVertex2f(325, 380);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(340,150);
+  glVertex2f(350, 150);
+  glVertex2f(350, 360);
+  glVertex2f(340, 370);
+  glEnd();
+
+   glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(355,150);
+  glVertex2f(365, 150);
+  glVertex2f(365, 360);
+  glVertex2f(355, 370);
+  glEnd();
+
+
+  // Orange building (Left)
+  glBegin(GL_QUADS);
+  glColor3ub(242,149,86);
+  glVertex2f(230,70);
+  glVertex2f(260, 70);
+  glVertex2f(260, 280);
+  glVertex2f(230, 310);
+  glEnd();
+
+  // Orange building (Right)
+  glBegin(GL_QUADS);
+  glColor3ub(246,128,67);
+  glVertex2f(150,70);
+  glVertex2f(230, 70);
+  glVertex2f(230, 310);
+  glVertex2f(150, 280);
+  glEnd();
+
+  // Shadow for the orange building
+  glBegin(GL_TRIANGLES);
+  glColor3ub(237,101,60);
+  glVertex2f(225,140);
+  glVertex2f(225, 300);
+  glVertex2f(155, 275);
+  glEnd();
+
+  // Windows for the orange building
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(160,70);
+  glVertex2f(180, 70);
+  glVertex2f(180, 270);
+  glVertex2f(160, 260);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(190,70);
+  glVertex2f(210, 70);
+  glVertex2f(210, 280);
+  glVertex2f(190, 270);
+  glEnd();
+
+  // Pink building (Main)
+  glBegin(GL_QUADS);
+  glColor3ub(234,82,107);
+  glVertex2f(110,70);
+  glVertex2f(260, 70);
+  glVertex2f(260, 140);
+  glVertex2f(110, 170);
+  glEnd();
+  // White windows for the pink building
+glBegin(GL_QUADS);
+// Window 1
+glColor3ub(255, 255, 255); // White color
+glVertex2f(120, 80);
+glVertex2f(140, 80);
+glVertex2f(140, 120);
+glVertex2f(120, 120);
+glEnd();
+
+glBegin(GL_QUADS);
+// Window 2
+glColor3ub(255, 255, 255); // White color
+glVertex2f(160, 80);
+glVertex2f(180, 80);
+glVertex2f(180, 120);
+glVertex2f(160, 120);
+glEnd();
+
+glBegin(GL_QUADS);
+// Window 3
+glColor3ub(255, 255, 255); // White color
+glVertex2f(200, 80);
+glVertex2f(220, 80);
+glVertex2f(220, 120);
+glVertex2f(200, 120);
+glEnd();
+
+
+  // Pink building (Side)
+
+  // Additional buildings to balance the cityscape
+  // Add blue building on the left
+  glBegin(GL_QUADS);
+  glColor3ub(34,102,164);  // Blue shade
+  glVertex2f(60,70);
+  glVertex2f(110,70);
+  glVertex2f(110,240);
+  glVertex2f(60,240);
+  glEnd();
+
+  // Windows on the blue building
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);  // White windows
+  glVertex2f(70,100);
+  glVertex2f(80,100);
+  glVertex2f(80,220);
+  glVertex2f(70,220);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);  // White windows
+  glVertex2f(90,100);
+  glVertex2f(100,100);
+  glVertex2f(100,220);
+  glVertex2f(90,220);
+  glEnd();
+
+  // Green building on the far right
+  glBegin(GL_QUADS);
+  glColor3ub(169,9,83);  // Green shade
+  glVertex2f(370,70);
+  glVertex2f(440,70);
+  glVertex2f(440,250);
+  glVertex2f(370,250);
+  glEnd();
+
+  // Windows on the green building
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(380,100);
+  glVertex2f(390,100);
+  glVertex2f(390,230);
+  glVertex2f(380,230);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(400,100);
+  glVertex2f(410,100);
+  glVertex2f(410,230);
+  glVertex2f(400,230);
+  glEnd();
+
+  glBegin(GL_QUADS);
+  glColor3ub(255,255,255);
+  glVertex2f(420,100);
+  glVertex2f(430,100);
+  glVertex2f(430,230);
+  glVertex2f(420,230);
+  glEnd();
+
+  glFlush();
+}
+
+int main (int argc, char** argv)
+{
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+
+  // giving window size in X- and Y- direction
+  glutInitWindowSize(500, 500);
+  glutInitWindowPosition(0, 0);
+
+  // Giving name to window
+  glutCreateWindow("Complete Cityscape");
+  myInit();
+
+  glutDisplayFunc(display);
+  glutMainLoop();
+}
